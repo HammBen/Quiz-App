@@ -8,26 +8,24 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-// import ProgressBar from "react-native-progress/Bar";
 import * as Progress from "react-native-progress";
 import { colors } from "../assets/colors";
 import { Dimensions } from "react-native";
 import React from "react";
 import { data } from "../constants/data";
 
-const { width, height } = Dimensions.get("window");
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 const HomeScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
-      <View style={styles.subjectCard}>
+      <TouchableOpacity style={styles.subjectCard} onPress={()=> {navigation.navigate("Difficulty")}} >
         <View style={styles.innerCont}>
           <Image
             source={item.image}
             resizeMode="contain"
-            style={{ width: "100%", aspectRatio: 1.2, height: undefined }}
+            style={{ width: "100%", aspectRatio: 1.81, height: undefined }}
           />
           <Text
             style={{
@@ -43,13 +41,14 @@ const HomeScreen = ({ navigation }) => {
             <Progress.Bar
               progress={0.3}
               width={100}
-              height={4.6}
-              color="grey"
-              unfilledColor={colors.secondary}
+              height={4}
+              color={item.progressBarColor}
+              borderWidth={0}
+              unfilledColor={colors.progressBar}
             />
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return (
@@ -65,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
         <View style={styles.drawerBtn}>
           <TouchableOpacity
-            onPress={() => navigation.toggleDrawer()}
+            onPress={() => navigation.openDrawer()}
             style={styles.menuIcon}
           >
             <MaterialCommunityIcons
@@ -136,11 +135,14 @@ const styles = StyleSheet.create({
   mainTextSection: {
     width: "75%",
     marginBottom: "5%",
-    marginLeft: "2%",
+    marginLeft: "4%",
+    // borderColor: "red",
+    // borderWidth: 1,
   },
   mainText: {
     fontSize: 20,
     fontWeight: "600",
+    textAlign: "left",
     lineHeight: 26,
     color: colors.text,
   },
@@ -175,8 +177,14 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
     backgroundColor: colors.white,
     justifyContent: "center",
-    // alignItems: "center",
     flex: 1,
   },
-  ProgBarContainer: {},
+  ProgBarContainer: {
+    height: "10%",
+    // borderColor: "red",
+    // borderWidth: 1,
+    justifyContent: "center",
+    // alignItems: "center",
+    marginBottom: 5,
+  },
 });

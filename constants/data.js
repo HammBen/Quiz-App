@@ -2,37 +2,37 @@ export const data = [
   {
     id: 1,
     name: "Art & Literature",
-    color: "#ffffff",
+    progressBarColor: "#f0aa66",
     image: require("../assets/arts.png"),
   },
   {
     id: 2,
     name: "Sport",
-    color: "#ffffff",
+    progressBarColor: "#bc8ae2",
     image: require("../assets/sports.png"),
   },
   {
     id: 3,
     name: "Mathematics",
-    color: "#ffffff",
+    progressBarColor: "#2576d4",
     image: require("../assets/maths.png"),
   },
   {
     id: 4,
     name: "Science",
-    color: "#ffffff",
+    progressBarColor: "#f1f0f3",
     image: require("../assets/science.png"),
   },
   {
     id: 5,
     name: "History",
-    color: "#ffffff",
+    progressBarColor: "#f996a9",
     image: require("../assets/history.png"),
   },
   {
     id: 6,
     name: "Music",
-    color: "#ffffff",
+    progressBarColor: "#b4d5af",
     image: require("../assets/music.png"),
   },
 ];
