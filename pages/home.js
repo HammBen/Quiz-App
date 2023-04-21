@@ -20,12 +20,22 @@ const windowWidth = Dimensions.get("window").width;
 const HomeScreen = ({ navigation }) => {
   const renderItem = ({ item }) => {
     return (
-      <TouchableOpacity style={styles.subjectCard} onPress={()=> {navigation.navigate("Difficulty")}} >
+      <TouchableOpacity
+        style={styles.subjectCard}
+        onPress={() => {
+          navigation.navigate("Difficulty");
+        }}
+      >
         <View style={styles.innerCont}>
           <Image
             source={item.image}
             resizeMode="contain"
-            style={{ width: "100%", aspectRatio: 1.81, height: undefined }}
+            style={{
+              width: "100%",
+              aspectRatio: 1.81,
+              height: undefined,
+              marginBottom: 5,
+            }}
           />
           <Text
             style={{
