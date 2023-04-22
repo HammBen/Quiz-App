@@ -79,15 +79,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View>
       <Text>HomeScreen</Text>
-      <Button
-        title="Button"
-        onPress={() => {
-          navigation.navigate("Another", {
-            itemId: 10,
-            itemName: "Benjamin Hammond",
-          });
-        }}
-      />
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -110,7 +101,10 @@ const AnotherScreen = ({ navigation, route }) => {
       <Text style={{ borderColor: "red", borderWidth: 1, color: "black" }}>
         {data.name}
       </Text>
-      <Image source={data.image} />
+      <Image
+        source={data.image}
+        style={{ width: "100%", height: undefined, aspectRatio: 1.5 }}
+      />
       <Text>Another Screen</Text>
       <Button
         title="Button"
