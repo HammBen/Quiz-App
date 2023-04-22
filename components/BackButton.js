@@ -3,7 +3,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 import { colors } from "../assets/colors";
 
-export default function BackButton({ title, onPress }) {
+export default function BackButton({navigation}) {
   return (
     <TouchableOpacity
       style={styles.backBtn}

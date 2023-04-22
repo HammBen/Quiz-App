@@ -1,14 +1,14 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState, useCallback } from "react";
-import PrimaryButton from "../components/PrimaryButton";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { colors } from "../assets/colors";
 import BackButton from "../components/BackButton";
+import React, { useState, useCallback } from "react";
+import PrimaryButton from "../components/PrimaryButton";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const LevelDifficulty = ({ navigation, route }) => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(null);
+  const data = route.params.data;
 
+  const [activeButtonIndex, setActiveButtonIndex] = useState(null);
   const handleButtonPress = useCallback((index) => {
     setActiveButtonIndex(index);
   }, []);
@@ -17,28 +17,15 @@ const LevelDifficulty = ({ navigation, route }) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.mainCont}>
         <View style={styles.navBar}>
-          <BackButton />
-          {/* <TouchableOpacity
-            style={styles.backBtn}
-            onPress={() => {
-              navigation.goBack();
-            }}
-          >
-            <MaterialCommunityIcons
-              name="arrow-left"
-              size={20}
-              color={colors.primary}
-            />
-            <Text style={styles.backBtnText}>Back</Text>
-          </TouchableOpacity> */}
+          <BackButton navigation={navigation}/>
         </View>
         <View style={styles.headerTextCont}>
-          <Text style={styles.headerText}>Sport</Text>
+          <Text style={styles.headerText}>{data.name}</Text>
         </View>
         <View style={styles.mainSect}>
           <Image
             style={{ width: "100%", height: undefined, aspectRatio: 1.2 }}
-            source={require("../constants/data")}
+            source={data.image}
           />
         </View>
         <View style={styles.levelSelect}>
