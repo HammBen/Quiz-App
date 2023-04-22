@@ -1,25 +1,24 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PrimaryButton from "../components/PrimaryButton";
 import { colors } from "../assets/colors";
+import BackButton from "../components/BackButton";
 
-const LevelDifficulty = ({ navigation }) => {
+const LevelDifficulty = ({ navigation, route }) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(null);
 
   const handleButtonPress = useCallback((index) => {
     setActiveButtonIndex(index);
   }, []);
 
-  // function handleButtonPress() {
-  //   setIsButtonActive(true);
-  // }
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainCont}>
         <View style={styles.navBar}>
-          <TouchableOpacity
+          <BackButton />
+          {/* <TouchableOpacity
             style={styles.backBtn}
             onPress={() => {
               navigation.goBack();
@@ -31,7 +30,7 @@ const LevelDifficulty = ({ navigation }) => {
               color={colors.primary}
             />
             <Text style={styles.backBtnText}>Back</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <View style={styles.headerTextCont}>
           <Text style={styles.headerText}>Sport</Text>
@@ -39,7 +38,7 @@ const LevelDifficulty = ({ navigation }) => {
         <View style={styles.mainSect}>
           <Image
             style={{ width: "100%", height: undefined, aspectRatio: 1.2 }}
-            source={require("../assets/sports.png")}
+            source={require("../constants/data")}
           />
         </View>
         <View style={styles.levelSelect}>
@@ -61,13 +60,6 @@ const LevelDifficulty = ({ navigation }) => {
           />
         </View>
       </View>
-
-      {/* <Button
-        title="go to Home Wai"
-        onPress={() => {
-          navigation.navigate("Home");
-        }}
-      /> */}
     </SafeAreaView>
   );
 };
@@ -90,8 +82,9 @@ const styles = StyleSheet.create({
   },
   backBtn: {
     width: "25%",
-    borderColor: "orange",
-    // borderWidth: 1,
+    borderColor: colors.progressBar,
+    backgroundColor: colors.white,
+    borderWidth: 2,
     borderRadius: 20,
     padding: 10,
     flex: 1,

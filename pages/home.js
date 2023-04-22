@@ -5,25 +5,32 @@ import {
   Text,
   Image,
   FlatList,
+  Dimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Progress from "react-native-progress";
 import { colors } from "../assets/colors";
-import { Dimensions } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { data } from "../constants/data";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
+  // useEffect(()=>{
+  //   if(route.params?.answer){
+  //     console.log("success")
+  //   }
+  // }, [route.params?.answer])
   const renderItem = ({ item }) => {
     return (
       <TouchableOpacity
         style={styles.subjectCard}
         onPress={() => {
-          navigation.navigate("Difficulty");
+          navigation.navigate({
+            name: "Difficulty",
+          });
         }}
       >
         <View style={styles.innerCont}>
@@ -100,6 +107,7 @@ const HomeScreen = ({ navigation }) => {
           showsVerticalScrollIndicator={false}
         />
       </View>
+      <Progress.CircleSnail color={['red', 'green', 'blue']} />
     </SafeAreaView>
   );
 };

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   },
   activeBtn: {
     backgroundColor: colors.primary,
+    borderWidth: 0,
   },
   activeTitle: {
     color: "white",
