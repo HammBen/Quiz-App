@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export const NormalNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeDrawer} />
       <Stack.Screen name="Level" component={LevelDifficulty} />
       <Stack.Screen name="Questions" component={QuestionAnswer} />

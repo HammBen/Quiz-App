@@ -4,22 +4,61 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import BackButton from "../components/BackButton";
 import AnswerButton from "../components/AnswerButton";
 import { useEffect, useState } from "react";
+import { ActivityIndicator } from "react-native";
 
 export default QuestionAnswer = ({ navigation }) => {
   const [questions, setQuestions] = useState();
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [loading, setLoading] = useState(true);
   const getQuiz = async () => {
     url = "https://opentdb.com/api.php?amount=10&type=multiple&encode=url3986";
     res = await fetch(url);
     data = await res.json();
     setQuestions(data.results[0]);
+    setLoading(false);
   };
   useEffect(() => {
     getQuiz();
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      {questions && (
+      {loading ? (
+        <View style={styles.activityIndicatorContainer}>
+          <ActivityIndicator size="large" color="#BA68C8" />
+          <Text style={{ marginTop: 10, fontSize: 20, fontWeight: "bold", color: "#BA68C8" }}>
+            Loading...
+          </Text>
+        </View>
+      ) : (
+        <View style={styles.mainCont}>
+          <View style={styles.navBar}>
+            <BackButton navigation={navigation} />
+          </View>
+          <View style={styles.mainSect}>
+            <View style={styles.questionCont}>
+              <Text style={styles.questionNumber}>
+                Question {questionNumber + 1}
+              </Text>
+              <Text style={styles.question}>
+                {decodeURIComponent(questions.question)}
+              </Text>
+            </View>
+            <View style={styles.questionImage}>
+              <Image
+                source={require("../assets/basketball.png")}
+                style={{ width: "100%", height: undefined, aspectRatio: 1.5 }}
+              />
+            </View>
+            <View style={styles.answerSelect}>
+              <AnswerButton number="1" />
+              <AnswerButton number="2" />
+              <AnswerButton number="3" />
+              <AnswerButton number="4" />
+            </View>
+          </View>
+        </View>
+      )}
+      {/* {questions && (
         <View style={styles.mainCont}>
           <View style={styles.navBar}>
             <BackButton navigation={navigation} />
@@ -43,7 +82,7 @@ export default QuestionAnswer = ({ navigation }) => {
             </View>
           </View>
         </View>
-      )}
+      )} */}
     </SafeAreaView>
   );
 };
@@ -52,6 +91,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+  },
+  activityIndicatorContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   mainCont: {
     marginHorizontal: 15,

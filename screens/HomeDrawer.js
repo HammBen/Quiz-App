@@ -73,7 +73,7 @@ export const HomeDrawer = ({ navigation }) => {
         </View>
         <View style={styles.drawerBtn}>
           <TouchableOpacity
-            onPress={() => navigation.openDrawer()}
+            // onPress={() => navigation.openDrawer()}
             style={styles.menuIcon}
           >
             <MaterialCommunityIcons
