@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     aspectRatio: 1.6,
     borderColor: colors.progressBar,
     backgroundColor: colors.white,
-    borderWidth: 2,
     borderRadius: 20,
     padding: 10,
     justifyContent: "space-between",
@@ -39,5 +38,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: colors.text,
+    marginLeft: 10,
   },
 });

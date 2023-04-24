@@ -22,7 +22,7 @@ export const HomeDrawer = ({ navigation }) => {
       <TouchableOpacity
         style={styles.subjectCard}
         onPress={() => {
-          navigation.navigate( "Level", { data: item });
+          navigation.navigate("Level", { data: item });
         }}
       >
         <View style={styles.innerCont}>

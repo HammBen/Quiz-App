@@ -6,18 +6,20 @@ import PrimaryButton from "../components/PrimaryButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const LevelDifficulty = ({ navigation, route }) => {
-  const data = route.params.data;
+  // const { data } = route.params;
+  const data = route?.params?.data || {};
 
   const [activeButtonIndex, setActiveButtonIndex] = useState(null);
   const handleButtonPress = useCallback((index) => {
     setActiveButtonIndex(index);
+    navigation.navigate("Questions");
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.mainCont}>
         <View style={styles.navBar}>
-          <BackButton navigation={navigation}/>
+          <BackButton navigation={navigation} />
         </View>
         <View style={styles.headerTextCont}>
           <Text style={styles.headerText}>{data.name}</Text>
@@ -30,21 +32,23 @@ const LevelDifficulty = ({ navigation, route }) => {
         </View>
         <View style={styles.levelSelect}>
           <Text style={styles.levelSelectQuestion}>Choose your level</Text>
-          <PrimaryButton
-            title="Easy"
-            isActive={activeButtonIndex === 0}
-            onPress={() => handleButtonPress(0)}
-          />
-          <PrimaryButton
-            title="Medium"
-            isActive={activeButtonIndex === 1}
-            onPress={() => handleButtonPress(1)}
-          />
-          <PrimaryButton
-            title="Hard"
-            isActive={activeButtonIndex === 2}
-            onPress={() => handleButtonPress(2)}
-          />
+          <View style={styles.buttonCont}>
+            <PrimaryButton
+              title="Easy"
+              isActive={activeButtonIndex === 0}
+              onPress={() => handleButtonPress(0)}
+            />
+            <PrimaryButton
+              title="Medium"
+              isActive={activeButtonIndex === 1}
+              onPress={() => handleButtonPress(1)}
+            />
+            <PrimaryButton
+              title="Hard"
+              isActive={activeButtonIndex === 2}
+              onPress={() => handleButtonPress(2)}
+            />
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -99,9 +103,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: colors.text,
   },
+  buttonCont: {
+    paddingHorizontal: 10,
+    marginTop: 10,
+  },
   levelSelect: {
-    // borderColor: "red",
+    borderColor: "red",
     // borderWidth: 1,
+    marginTop: 5,
   },
   levelSelectQuestion: {
     fontSize: 18,

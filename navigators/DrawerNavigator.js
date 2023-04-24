@@ -15,6 +15,7 @@ export const DrawerNavigator = () => {
         name="Level"
         component={LevelDifficulty}
         options={{ drawerLabel: () => null, title: null }}
+        drawerLockMode='locked-closed'
       />
     </Drawer.Navigator>
   );

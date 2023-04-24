@@ -20,8 +20,9 @@ const styles = StyleSheet.create({
   primaryBtn: {
     width: "100%",
     height: undefined,
-    aspectRatio: 6.5,
+    aspectRatio: 6,
     justifyContent: "center",
+    alignItems: "center",
     borderWidth: 2,
     borderColor: colors.secondary,
     borderRadius: 30,
@@ -41,40 +42,3 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
-//chatGPT
-
-// export default function PrimaryButton({ title, isActive, onPress, style, titleStyle }) {
-//   return (
-//     <TouchableOpacity
-//       style={[styles.primaryBtn, style, isActive && styles.activeBtn]}
-//       onPress={onPress}
-//     >
-//       <Text style={[styles.btnTitle, titleStyle, isActive && styles.activeTitle]}>{title}</Text>
-//     </TouchableOpacity>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   primaryBtn: {
-//     width: "100%",
-//     height: undefined,
-//     aspectRatio: 6.5,
-//     justifyContent: "center",
-//     borderWidth: 2,
-//     borderRadius: 30,
-//     marginVertical: 10,
-//   },
-//   activeBtn: {
-//     backgroundColor: "#007AFF",
-//     borderColor: "#007AFF",
-//   },
-//   btnTitle: {
-//     textAlign: "center",
-//     fontSize: 17,
-//     fontWeight: "bold",
-//   },
-//   activeTitle: {
-//     color: "white",
-//   },
-// });

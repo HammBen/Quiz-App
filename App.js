@@ -14,35 +14,19 @@ import {
 } from "react-native";
 import { data } from "./constants/data";
 import { colors } from "./assets/colors";
+import { SafeAreaView } from "react-native-safe-area-context";
+import BackButton from "./components/BackButton";
+import AnswerButton from "./components/AnswerButton";
 import { DrawerNavigator } from "./navigators/DrawerNavigator";
 import { NormalNavigator } from "./navigators/NormalNavigator";
+import { RootNavigator } from "./navigators/RootNavigator";
+import QuestionAnswer from "./screens/QuestionAnswer";
 // import HomeScreen from "./pages/home";
 // import LevelDifficulty from "./pages/levelSelector";
 // import QuizChallenge from "./pages/quizChallenge";
 
 // const Drawer = createDrawerNavigator();
 // const Stack = createNativeStackNavigator();
-
-// const MyStack = () => {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen name="Levels" component={LevelDifficulty} />
-//       <Stack.Screen name="Main" component={MyDrawer} />
-//       <Stack.Screen name="Quiz" component={QuizChallenge} />
-//     </Stack.Navigator>
-//   );
-// };
-
-// const MyDrawer = () => {
-//   return (
-//     <Drawer.Navigator
-//       screenOptions={{ drawerPosition: "right", headerShown: false }}
-//     >
-//       <Drawer.Screen name="Home" component={HomeScreen} />
-//       <Drawer.Screen name="Difficulty" component={MyStack} />
-//     </Drawer.Navigator>
-//   );
-// };
 
 // const HomeScreen = ({ navigation }) => {
 //   const renderItem = ({ item }) => {
@@ -120,23 +104,87 @@ import { NormalNavigator } from "./navigators/NormalNavigator";
 
 // const AlsoAnotherScreen = ({ navigation }) => {
 //   return (
-//     <View>
-//       <Text>Also Another Screen</Text>
-//       <Button
-//         title="Button"
-//         onPress={() => {
-//           navigation.navigate("Home");
-//         }}
-//       />
-//     </View>
+//     <SafeAreaView>
+//       <View style={styles.mainCont}>
+//         <View style={styles.navBar}>
+//           <BackButton navigation={navigation} />
+//         </View>
+//         <View style={styles.mainSect}>
+//           <View style={styles.questionCont}>
+//             <Text style={styles.questionNumber}>Question 4</Text>
+//             <Text style={styles.question}>
+//               What is the diameter of a basketball hoop in inches?
+//             </Text>
+//           </View>
+//           <View style={styles.questionImage}>
+//             <Image
+//               source={require("./assets/basketball.png")}
+//               style={{ width: "100%", height: undefined, aspectRatio: 1.5 }}
+//             />
+//           </View>
+//           <View style={styles.answerSelect}>
+//             <AnswerButton number="1" />
+//             <AnswerButton number="2" />
+//             <AnswerButton number="3" />
+//             <AnswerButton number="4" />
+//           </View>
+//         </View>
+//       </View>
+//     </SafeAreaView>
 //   );
 // };
+
+// const styles = StyleSheet.create({
+//   mainCont: {
+//     marginHorizontal: 15,
+//   },
+//   mainSect: {
+//     borderColor: "red",
+//     // borderWidth: 1,
+//     marginTop: 20,
+//     paddingHorizontal: 10,
+//   },
+//   questionCont: {
+//     borderColor: "blue",
+//     // borderWidth: 1,
+//     marginVertical: 20,
+//   },
+//   questionNumber: {
+//     color: colors.subText,
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     marginBottom: 5,
+//   },
+//   question: {
+//     color: colors.text,
+//     fontSize: 23,
+//     fontWeight: "600",
+//     width: "80%",
+//     lineHeight: 28,
+//     marginVertical: 5,
+//   },
+//   questionImage: {
+//     marginVertical: 5,
+//     padding: 20,
+//   },
+//   answerSelect: {
+//     borderColor: "green",
+//     // borderWidth: 1,
+//     flexDirection: "row",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     flexWrap: "wrap",
+//     marginTop: 15,
+//   },
+// });
 
 export default function App() {
   return (
     <NavigationContainer>
-      <DrawerNavigator />
-      {/* <NormalNavigator /> */}
+      {/* <DrawerNavigator /> */}
+      <NormalNavigator />
+      {/* <RootNavigator /> */}
+      {/* <QuestionAnswer /> */}
     </NavigationContainer>
   );
 }
