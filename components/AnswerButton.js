@@ -10,7 +10,7 @@ const AnswerNumber = ({ number }) => {
   );
 };
 
-export default function BackButton({ navigation, number }) {
+export default function AnswerButton({ number }) {
   return (
     <TouchableOpacity style={styles.ansBtn}>
       <View style={styles.innerCont}>
